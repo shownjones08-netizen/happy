@@ -493,7 +493,7 @@ SERVER_EMOJI  = {1: "\U0001F7E2", 2: "\U0001F535"}
 SERVER_NOTE   = {1: "Cheapest accounts \u2022 No guarantee",
                  2: "Premium quality \u2022 Guaranteed"}
 SUPPORT_URL = "https://t.me/WhoIsShown"
-CHANNEL_URL = "https://t.me/shownXher
+CHANNEL_URL = "https://t.me/shownXher"
 # ── TGShark API (Server 1 = auto-fetched API accounts) ──────────────────────
 # Docs: https://tgsharkapi.store/docs/
 TGSHARK_API_KEY = os.environ.get("TGSHARK_API_KEY", "").strip()   # <-- apni TGShark API key
