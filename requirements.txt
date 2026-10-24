@@ -1,0 +1,101 @@
+# ══════════════════════════════════════════════════════════════════════════════
+#  QURESHI x OTP  ·  FULL Python requirements
+#  --------------------------------------------------------------------------
+#  Install:   pip install -r requirements.txt
+#  Python:    3.9 – 3.12  (tested on 3.11)
+#  --------------------------------------------------------------------------
+#  Har package jo app_2.py me kisi bhi jagah use hota hai, yahan hai.
+#  (stdlib modules — os, sys, re, io, json, time, html, asyncio, sqlite3,
+#   threading, random, string, logging, traceback, socket, math, shutil,
+#   subprocess, tempfile, urllib, xml.etree, datetime — install nahi chahiye)
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── CORE: Telegram bot framework ─────────────────────────────────────────────
+# telebot / telebot.types / InlineKeyboardButton(style=, icon_custom_emoji_id=)
+# NOTE: style + premium-emoji button support needs >= 4.30; 4.37.x tested.
+pyTelegramBotAPI>=4.37.1,<5.0.0
+
+# ── CORE: HTTP client (TGShark API, payments, webhooks, tunnel checks) ───────
+requests>=2.31.0,<3.0.0
+certifi>=2024.2.2
+urllib3>=2.0.0,<3.0.0
+charset-normalizer>=3.0.0
+idna>=3.4
+
+# ── CORE: Telethon — account login, OTP, session, QR login ──────────────────
+Telethon>=1.34.0,<2.0.0
+pyaes>=1.6.1              # Telethon MTProto AES (auto-dep, pinned for safety)
+rsa>=4.9                  # Telethon RSA handshake (auto-dep, pinned for safety)
+
+# ── CORE: MTProto proxy support (fixes "0 bytes read on 8 expected bytes") ──
+# Telethon needs this for socks5:// / socks4:// proxies. Without it the
+# `proxy=` argument is silently ignored.
+python-socks[asyncio]>=2.4.4
+
+# ── CORE: QR code generation (UPI payment QR + Telegram QR login) ───────────
+qrcode>=7.4.2
+Pillow>=10.0.0            # required by qrcode to render/save PNG images
+
+# ── CORE: Flask REST API (Developer API + payment webhook + /store page) ────
+Flask>=3.0.0,<4.0.0
+Werkzeug>=3.0.0
+Jinja2>=3.1.2
+itsdangerous>=2.1.2
+click>=8.1.3
+blinker>=1.6.2
+MarkupSafe>=2.1.3
+
+# ── OPTIONAL: async HTTP (used indirectly by Telethon helpers) ──────────────
+aiohttp>=3.9.0
+
+# ── OPTIONAL: nicer console output / colored logs (safe if absent) ──────────
+colorama>=0.4.6
+
+# ── OPTIONAL: timezone helpers (safe if absent) ─────────────────────────────
+python-dateutil>=2.8.2
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  SYSTEM / NON-PYTHON DEPENDENCIES  (pip se install nahi hote)
+# ══════════════════════════════════════════════════════════════════════════════
+#
+#  1) cloudflared   — public tunnel for the REST API (auto-downloaded on first run)
+#       Linux : curl -L -o cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+#               chmod +x cloudflared
+#       Debian: sudo apt install cloudflared
+#
+#  2) adb (Android Platform Tools) — "Phone VPS" OTP auto-read feature
+#       Debian/Ubuntu : sudo apt install -y android-tools-adb
+#       Manual        : https://developer.android.com/tools/releases/platform-tools
+#
+#  3) Node.js + npm — WhatsApp bridge (wa_bridge/index.js) ONLY
+#       Install: https://nodejs.org  (v18+ recommended)
+#       Then   : cd wa_bridge && npm install
+#
+#  4) ffmpeg — optional, only if you add audio/video handling later
+#       Debian/Ubuntu : sudo apt install -y ffmpeg
+#
+#  5) Build tools (some wheels need them on minimal images)
+#       Debian/Ubuntu : sudo apt install -y build-essential python3-dev libffi-dev libssl-dev
+#
+# ══════════════════════════════════════════════════════════════════════════════
+#  ONE-SHOT SETUP (Debian / Ubuntu VPS)
+# ══════════════════════════════════════════════════════════════════════════════
+#   sudo apt update
+#   sudo apt install -y python3 python3-pip python3-venv build-essential \
+#                       python3-dev libffi-dev libssl-dev adb curl unzip
+#   python3 -m venv venv && source venv/bin/activate
+#   pip install --upgrade pip
+#   pip install -r requirements.txt
+#   export BOT_TOKEN='...' TG_API_ID='...' TG_API_HASH='...' OWNER_ID='...'
+#   python3 app_2.py
+#
+# ══════════════════════════════════════════════════════════════════════════════
+#  NOTES
+# ══════════════════════════════════════════════════════════════════════════════
+#  • Telethon, requests, Flask apni dependencies khud laate hain; yahan
+#    explicitly likha hai taaki koi bhi missing na rahe.
+#  • Koi bhi package optional hai to code gracefully degrade karta hai
+#    (e.g. Telethon missing -> account login disabled, Flask missing -> API off).
+#  • Pillow ke bina qrcode PNG save nahi kar payega -> UPI QR + QR login fail.
+#  • python-socks ke bina MTProto proxy ignore ho jayega -> "0 bytes read" error.
+# ══════════════════════════════════════════════════════════════════════════════
