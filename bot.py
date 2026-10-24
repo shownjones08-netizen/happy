@@ -477,12 +477,12 @@ PHONE_BRIDGE_OK = True
 #  Fill these in yourself (or set the matching environment variables).
 #  Nothing is hard-coded any more.
 # ══════════════════════════════════════════════════════════════════════════════
-BOT_TOKEN   = os.environ.get("8946021148:AAESyYIYWOd0BFHJ_0zUXtLlU7uvRaQWlFE", "").strip()          # <-- apna bot token yahan
+BOT_TOKEN   = os.environ.get("8842739712:AAGafiLMUycroP97UPtkXois4azY1Qj6ovU", "").strip()          # <-- apna bot token yahan
 # built-in Telegram API creds used to log accounts in (admin only sends the phone)
-DEFAULT_API_ID   = int(os.environ.get("TG_API_ID", "0") or 0)  # <-- apna API ID yahan
-DEFAULT_API_HASH = os.environ.get("TG_API_HASH", "").strip()   # <-- apna API Hash yahan
-OWNER_ID    = int(os.environ.get("OWNER_ID", "8256108006") or 0)        # <-- apna owner ID yahan
-ADMIN_IDS   = {OWNER_ID}
+DEFAULT_API_ID   = int(os.environ.get("36841145", "0") or 0)  # <-- apna API ID yahan
+DEFAULT_API_HASH = os.environ.get("88a298654d3fbf4723948fbe0df7fbf2", "").strip()   # <-- apna API Hash yahan
+OWNER_ID    = int(os.environ.get("OWNER_ID", "8984851474") or 0)        # <-- apna owner ID yahan
+ADMIN_IDS   = {8256108006}
 
 STORE_NAME  = "SHOWN"
 STORE_TAG   = "𝗧𝗚 𝗦𝗧𝗢𝗥𝗘"
